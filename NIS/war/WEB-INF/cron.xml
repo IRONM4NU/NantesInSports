@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+    <cron>
+        <url>/recache</url>
+        <description>Met à jour les activitées sur le sites</description>
+        <schedule>every monday 09:00</schedule>
+    </cron>
+    <cron>
+        <url>/rapport</url>
+        <description>Envoie un rapport hebdomadaire</description>
+        <schedule>every monday 09:00</schedule>
+        <timezone>Europe/Paris</timezone>
+    </cron>
+</cronentries>
