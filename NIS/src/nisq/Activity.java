@@ -1,5 +1,6 @@
 package nisq;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
@@ -15,7 +16,7 @@ public class Activity {
     String sport; // category 
     String localisation; // adresse 
     String date; //heure jour mois annee
-    List<Membre> participant;
+    List<Key<Membre>> participant;
     int places; // nombres max de participants 
      
     private Activity(){}
@@ -24,14 +25,14 @@ public class Activity {
     		String sport,
     		String localisation, 
     		String date,
-    		List<Membre> participant,
     		int places )
     {
     this.parent = parent;
     this.sport = sport;
     this.localisation = localisation;
     this.date = date;
-    this.participant = participant;
+    this.participant = new LinkedList();
+    this.participant.add(parent);
     this.places = places;
     	
     }
@@ -59,10 +60,10 @@ public class Activity {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public List<Membre> getParticipant() {
+	public List<Key<Membre>> getParticipant() {
 		return participant;
 	}
-	public void setParticipant(List<Membre> participant) {
+	public void setParticipant(List<Key<Membre>> participant) {
 		this.participant = participant;
 	}
 	public int getPlaces() {

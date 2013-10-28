@@ -33,14 +33,14 @@ public class NISServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
-		
-		
+					
 		    UserService userService = UserServiceFactory.getUserService();
 	        User user = userService.getCurrentUser();
 
 	        if (user != null) {
 	        	
+	        	
+	        	/* Récupération et affichage des membres du sites
 	        	List<Membre> membres = ofy().load().type(Membre.class).list();
 	        	String listMembres = "";
 	        	for(Membre membre : membres){
@@ -49,14 +49,15 @@ public class NISServlet extends HttpServlet {
 	        	}
 	        
 	        	resp.setContentType("text/plain");
-	            resp.getWriter().println("Hello, " + user.getNickname() + listMembres);
+	            resp.getWriter().println("Hello, " + user.getNickname() + listMembres);*/
 	            
 	          if(ofy().load().type(Membre.class).filter("id",user.getUserId()).list().isEmpty()) {
-	            	
+	           
+	           // ajout d'un nouveau membre 
 	           Membre m = new Membre(user.getNickname(),user.getUserId());
 	           ofy().save().entity(m); // enregistrement du membre sur le datastore
 	            	
-	            req.setAttribute("membres", listMembres);	
+	           //req.setAttribute("membres", listMembres);	
 	            	
 		            try {
 		                Properties props = new Properties();
