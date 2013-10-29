@@ -24,7 +24,7 @@
         <p> Choisissez une activité à ajouter à votre compte </p>
 <TABLE BORDER>
 <TR>
-<TD><a href="/member/ajoutactivity.jsp"><img src="/stylesheets/nis11.jpg" alt="Running" title="Running" /> </a></TD>
+<TD><a href="/member/ajoutactivity.jsp?activity=Running"><img src="/stylesheets/nis11.jpg" alt="Running" title="Running" /> </a></TD>
 <TD><a href="http://www.perdu.com"><img src="/stylesheets/nis12.jpg" alt="perdu.cm" title="Perdu?" /></TD>
 <TD><a href="http://www.perdu.com"><img src="/stylesheets/nis13.jpg" alt="perdu.cm" title="Perdu?" /></TD>
 <TD><a href="http://www.perdu.com"><img src="/stylesheets/nis14.jpg" alt="perdu.cm" title="Perdu?" /></TD>

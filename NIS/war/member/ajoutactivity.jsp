@@ -25,7 +25,7 @@
                     <legend>Créer une Activitée :</legend>
      
                     <label for="sport">Activité :<span class="requis">*</span></label>
-                    <input type="text" id="sport" name="sport" value="" />
+                    <input type="text" id="sport" name="sport" value=<%= request.getParameter("activity") %> />
                     <br />
                      
                     <label for="localisation">Localisation :<span class="requis">*</span></label>
