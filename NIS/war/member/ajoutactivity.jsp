@@ -2,28 +2,16 @@
  
 <%@ page import="com.google.appengine.api.users.*" %>
 <%@ page import="java.util.*" %>
- 
 <% UserService userService = UserServiceFactory.getUserService(); %>
 <%@ page import="nisq.Membre" %>
 <%@ page import="nisq.Activity" %>
+<jsp:include page="header.jsp"></jsp:include>
 
- 
-<!DOCTYPE html>
- 
-<html>
-    <head>
-        <title>Application App Engine</title>
-        <meta charset="utf-8" />
-        <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-   </head>
- 
-    <body>
-       <p><img src="/stylesheets/sport.jpg" alt="Bienvenue" /> </p>
-       <div>
+           <div class="box"> 
+           <div class="box-body"> 
             <form method="get" action="/ajout">
-                <fieldset>
-                    <legend>Créer une Activitée :</legend>
-     
+              <legend><h2>Créer une Activitée :</h2></legend>
+     			<fieldset >
                     <label for="sport">Activité :<span class="requis">*</span></label>
                     <input type="text" id="sport" name="sport" value=<%= request.getParameter("activity") %> />
                     <br />
@@ -42,7 +30,7 @@
                 </fieldset>
                 <input type="submit" value="Valider"  />
             </form>
-        </div>                
-       <p><a href="<%= userService.createLogoutURL("/") %>">Se déconnecter</a></p>
-     </body>
-</html>
+        </div>     
+        </div>   
+<jsp:include page="sidebar.jsp"></jsp:include>        
+<jsp:include page="footer.jsp"></jsp:include>

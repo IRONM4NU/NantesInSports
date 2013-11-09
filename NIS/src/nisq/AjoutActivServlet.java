@@ -42,8 +42,8 @@ public class AjoutActivServlet extends HttpServlet {
         		listActivity +=  activity.getSport() + " ";
         		
         	}
-        	response.setContentType("text/plain");
-            response.getWriter().println("Hello, " + user.getNickname() + listActivity);
+        	//response.setContentType("text/plain");
+            //response.getWriter().println("Hello, " + user.getNickname() + listActivity);
 
 	        if (user != null) {
 	            

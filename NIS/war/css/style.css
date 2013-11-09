@@ -103,13 +103,25 @@ textarea {
 a.subscribe {
 	float:left;
 	display:inline;
-	width:65px;
+	width:80px;
 	background:url(images/ico-subscribe.gif) no-repeat right 3px;
 	color:#939393;
 	font-family:"Times New Roman", Arial, sans-serif;
 	margin:27px 0 0 403px;
 	padding-right:14px;
 	text-transform:uppercase;
+}
+a.deconnection {
+	float:left;
+	display:inline;
+	width:100px;
+	background:url(images/ico-subscribe.gif) no-repeat right 3px;
+	color:#939393;
+	font-family:"Times New Roman", Arial, sans-serif;
+	margin:27px 0 0 403px;
+	padding-right:14px;
+	text-transform:uppercase;
+	
 }
 .search {
 	float:left;
@@ -263,7 +275,7 @@ h1#logo a {
 	z-index:10;
 }
 .box-featured .box-image {
-	width:426px;
+	width:260px;
 	height:264px;
 }
 .box-featured .box-body {
@@ -281,7 +293,6 @@ h1#logo a {
 	right:0;
 	width:137px;
 	height:138px;
-	background:url(images/mark-featured.png) no-repeat 0 0;
 	display:block;
 	z-index:10;
 }
