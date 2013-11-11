@@ -62,11 +62,9 @@
         <% if (userService.getCurrentUser() == null) { %>
         
             <p><a href="<%= userService.createLoginURL("/") %>">Se connecter</a></p>
-        <% }
-        else { %>
+        <% } else { %>
             <p>Bonjour <%= userService.getCurrentUser().getNickname() %> </p>
              <%= request.getAttribute("listMembres") %>
-            
             
             <p><a href="<%= userService.createLogoutURL("/") %>">Se déconnecter</a></p>
         <% } %>

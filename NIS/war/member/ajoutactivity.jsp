@@ -5,6 +5,9 @@
 <% UserService userService = UserServiceFactory.getUserService(); %>
 <%@ page import="nisq.Membre" %>
 <%@ page import="nisq.Activity" %>
+<%@ page import="nisq.Preference" %>
+
+
 <jsp:include page="header.jsp"></jsp:include>
 
            <div class="box"> 
@@ -13,7 +16,7 @@
               <legend><h2>Créer une Activitée :</h2></legend>
      			<fieldset >
                     <label for="sport">Activité :<span class="requis">*</span></label>
-                    <input type="text" id="sport" name="sport" value=<%= request.getParameter("activity") %> />
+                    <input type="text" id="sport" name="sport" value="" />
                     <br />
                      
                     <label for="localisation">Localisation :<span class="requis">*</span></label>
@@ -21,7 +24,24 @@
                     <br />
      
                     <label for="date">Date :<span class="requis">*</span></label>
-                    <input type="text" id="date" name="date" value="" />
+                    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    				<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+    				<script src="/js/jquery.ui.datepicker-fr.js"></script>
+    				<script src="/js/jquery-ui-timepicker-addon.js"></script>
+    				
+                    <input type="text" id="date" name="date" value="" class = "datepicker" />
+    				<script type="text/javascript">
+				        jQuery(function($)
+				        {
+				           $.datepicker.setDefaults( $.datepicker.regional['fr']);	
+				           
+				           $('#date').datetimepicker({
+				        	   dateFormat : 'dd/mm/yy',
+				        	   minDate : 0
+				           });
+				        });
+				    </script>
+				    </div>
                     <br />
      
                     <label for="places">Nombres de places :<span class="requis">*</span></label>
@@ -32,5 +52,6 @@
             </form>
         </div>     
         </div>   
+        
 <jsp:include page="sidebar.jsp"></jsp:include>        
 <jsp:include page="footer.jsp"></jsp:include>

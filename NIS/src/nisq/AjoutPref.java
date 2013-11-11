@@ -16,6 +16,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 import nisq.Membre;
+import nisq.Preference;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -24,7 +25,7 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
-public class AjoutActivServlet extends HttpServlet {
+public class AjoutPref extends HttpServlet {
 	static {
         ObjectifyService.register(Membre.class); // Fait connaître votre classe-entité à Objectify
         ObjectifyService.register(Activity.class);
@@ -52,20 +53,19 @@ public class AjoutActivServlet extends HttpServlet {
 	        		Key<Membre> cleParent = Key.create(Membre.class, user.getNickname());
 	        		Membre membre =  ofy().load().key(cleParent).now();
 	        		
-	        		String sport = request.getParameter( "sport" );
-		            String localisation = request.getParameter( "localisation" );
-		            String date = request.getParameter( "date" );
-		            int places = Integer.parseInt(request.getParameter("places"));
-
-		            if(ofy().load().type(Activity.class).filter("date",date).filter("localisation", localisation).list().isEmpty()) {
-			            Activity a = new Activity(cleParent, sport, localisation, date, places );
-			            ofy().save().entity(a); // enregistrement de l'activité dans le datastore
-		            }    
-		            String mes = sport + " " + localisation + " " + date + " " +  places + " .";
+	        		String sport1 = request.getParameter( "sport1" );
+		            String localisation1 = request.getParameter( "localisation1" );
 		            
-		            request.setAttribute( "mes", mes );
+		            String sport2 = request.getParameter( "sport2" );
+		            String localisation2 = request.getParameter( "localisation2" );
 		            
-	            	this.getServletContext().getRequestDispatcher( "/member/newactivity.jsp" ).forward( request, response );
+		            String sport3 = request.getParameter( "sport3" );
+		            String localisation3 = request.getParameter( "localisation3" );
+		       
+			        Preference p = new Preference(cleParent, sport1, localisation1, sport2, localisation2, sport3, localisation3);
+			        ofy().save().entity(p).now(); // enregistrement des préférence dans le datastore
+		                
+	            	this.getServletContext().getRequestDispatcher( "/affichpref" ).forward( request, response );
 				} catch (ServletException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
