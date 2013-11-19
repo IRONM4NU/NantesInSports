@@ -40,10 +40,10 @@
         </div>
          <% if (userService.getCurrentUser() == null) { %>
         
-          	<a class = "subscribe" href="<%= userService.createLogoutURL("/") %>">Connection</a>
+          	<a class = "subscribe" href="<%= userService.createLoginURL("/") %>">Connection</a>
         <% }
         else { %>   
-             <a class = "deconnection" href="<%= userService.createLogoutURL("/") %>">Déconnection</a>
+             <a class = "deconnection" href="<%= userService.createLogoutURL("/indexNis.html") %>">Déconnection</a>
         <% } %>
         <div class="cl">&nbsp;</div>
         <h1 id="logo" class="notext"><a href="#">Buzz</a></h1>

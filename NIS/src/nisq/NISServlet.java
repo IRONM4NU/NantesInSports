@@ -81,7 +81,7 @@ public class NISServlet extends HttpServlet {
 	          		}
 		            //resp.sendRedirect("./member/nis.jsp");
 	          try {
-				this.getServletContext().getRequestDispatcher("/member/home.jsp").forward(req, resp);
+				this.getServletContext().getRequestDispatcher("/member/ajouterpref.jsp").forward(req, resp);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
