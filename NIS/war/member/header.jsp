@@ -32,7 +32,7 @@
       <div class="shell">
         <div id="navigation">
           <ul>
-            <li><a href="/nis" class="active">Home</a></li>
+            <li><a href="/nis" >Home</a></li>
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/affichpref">Préférence</a></li>
           </ul>

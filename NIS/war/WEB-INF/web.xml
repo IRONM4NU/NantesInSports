@@ -21,6 +21,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>Ins</servlet-name>
+		<servlet-class>nisq.Inscrit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Ins</servlet-name>
+		<url-pattern>/inscrit</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Recherche</servlet-name>
+		<servlet-class>nisq.RechercheActiv</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Recherche</servlet-name>
+		<url-pattern>/recherche</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>EnvoiMail</servlet-name>
 		<servlet-class>nisq.EnvoiMail</servlet-class>
 	</servlet>

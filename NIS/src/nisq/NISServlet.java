@@ -30,6 +30,7 @@ public class NISServlet extends HttpServlet {
 	  static {
 	        ObjectifyService.register(Membre.class); // Fait connaître votre classe-entité à Objectify
 	        ObjectifyService.register(Activity.class); // Fait connaître votre classe-entité à Objectify
+	        ObjectifyService.register(Preference.class); 
 	    }
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -44,7 +45,7 @@ public class NISServlet extends HttpServlet {
 	          if(ofy().load().type(Membre.class).filter("id",user.getUserId()).list().isEmpty()) {
 	           
 	           // ajout d'un nouveau membre 
-	           Membre m = new Membre(user.getNickname(),user.getUserId());
+	           Membre m = new Membre(user.getNickname(),user.getUserId(),user.getEmail());
 	           ofy().save().entity(m); // enregistrement du membre sur le datastore	
 	            	
 		            try {
@@ -52,7 +53,7 @@ public class NISServlet extends HttpServlet {
 		                Properties props = new Properties();
 		                Session session = Session.getDefaultInstance(props, null);
 		                 
-		                String message = "  Merci de vous êtes inscrit. Prochainement vous pourrez organiser des activitées sportives sur Nantes.";
+		                String message = "  Merci de vous êtes inscrit. Maintenant vous pouvez organiser des activitées sportives sur Nantes.";
 		                 
 		                Message msg = new MimeMessage(session);
 		                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));

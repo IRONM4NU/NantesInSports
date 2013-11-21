@@ -34,15 +34,24 @@ public class Membre {
 
 		@Id String id;
 	    String nom;
+	    String mail;
 	    Preference preference;
-	    
-	    
+	       
 	    private Membre() {} // Obligatoire pour Objectify
 	 
-	    public Membre(String nickNameGoogle, String idGoogle) {
+	    public Membre(String nickNameGoogle, String idGoogle, String mail ) {
 	    	this.id = idGoogle; // id fournit par google ( user.getUserId )
 	        this.nom = nickNameGoogle;
+	        this.mail = mail;
 	    }
+
+		public String getMail() {
+			return mail;
+		}
+
+		public void setMail(String mail) {
+			this.mail = mail;
+		}
 }
 
 

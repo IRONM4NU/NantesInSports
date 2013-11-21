@@ -24,6 +24,7 @@ import javax.servlet.http.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -33,6 +34,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 		
 		  static {
 		        ObjectifyService.register(Membre.class); // Fait connaître votre classe-entité à Objectify
+		        ObjectifyService.register(Activity.class); // Fait connaître votre classe-entité à Objectify
+		        ObjectifyService.register(Preference.class); // Fait connaître votre classe-entité à Objectify
 		    }
 		
 		public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -48,61 +51,73 @@ import com.google.appengine.api.users.UserServiceFactory;
 				cal.add(Calendar.DAY_OF_MONTH, -1);
 				//Formattage de la date J-1
 				String dateVeille = formatter.format(cal.getTime());
-			
+							
 			    UserService userService = UserServiceFactory.getUserService();
 		        User user = userService.getCurrentUser();
-
+		       
 		        if (user != null) {
+		        	
 		        	// Récupération des activity créer la veille
-		        	List<Activity> acts = ofy().load().type(Activity.class).filter("dateCreation =",dateVeille).list();
+		           	List<Activity> acts = ofy().load().type(Activity.class).filter("dateCreation",dateVeille).list();           
 		        	for(Activity activity : acts){     		
 		        		String sport = activity.getSport();
 		        		String local = activity.getLocalisation();
 		        		String date = activity.getDate();
-		        	
-		        		//Récupération des membres
+		        		
 		        		List<Membre> membres = ofy().load().type(Membre.class).list();
 		        		for(Membre membre : membres){
+		        			// Récupère la liste(à un seul élément) des préférences du membre
+		        			List<Preference> preferences = ofy().load().type(Preference.class).ancestor(KeyFactory.createKey("Membre", membre.getNom())).list();    		
+		        			
+			        		String sportM1 = preferences.get(0).getSport1();
+			        		String sportM2 = preferences.get(0).getSport2();
+			        		String sportM3 = preferences.get(0).getSport3();
 			        		
-			        		String sportM1 = membre.getPreference().getSport1();
-			        		String sportM2 = membre.getPreference().getSport2();
-			        		String sportM3 = membre.getPreference().getSport3();
+			        		String localM1 = preferences.get(0).getLocalisation1();
+			        		String localM2 = preferences.get(0).getLocalisation2();
+			        		String localM3 = preferences.get(0).getLocalisation3();
+
+			        		boolean envoiMail =false;
 			        		
-			        		String localM1 = membre.getPreference().getLocalisation1();
-			        		String localM2 = membre.getPreference().getLocalisation2();
-			        		String localM3 = membre.getPreference().getLocalisation3();
-			        		
-			        		boolean envoiMail = false;
-			        		
-			        		if(sport == sportM1){
-			        			if(local == localM1){
+			        		if(sport.equals(sportM1)){
+			        			if(local.equals(localM1)){
 			        				envoiMail = true;
 			        			}
 			        		}
-			        		if(sport == sportM2){
-			        			if(local == localM2){
+			        		if(sport.equals(sportM2)){
+			           			if(local.equals(localM1)){
 			        				envoiMail = true;
 			        			}
 			        		}
-			        		if(sport == sportM3){
-			        			if(local == localM3){
+			        		if(sport.equals(sportM3)){
+			        			if(local.equals(localM1)){
 			        				envoiMail = true;
 			        			}
 			        		}
+
 			        		if(envoiMail){
 			        			 try {
 						                Properties props = new Properties();
+						               
 						                Session session = Session.getDefaultInstance(props, null);
-						                 
+						             
 						                String message = " Bonjour, une activitée : " + sport + " qui aura lieu à : " + local + "  le " + date + ", a été créer sur Nantes In Sports ";
-						                 
+						               
 						                Message msg = new MimeMessage(session);
+
 						                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
+						               
+						                System.out.println(membre.getMail());
+						                System.out.println(membre.getNom());
 						                msg.addRecipient(Message.RecipientType.TO,
-						                                 new InternetAddress(user.getEmail(), user.getNickname()));
-						                msg.setSubject("Une nouvelle activitée qui peut vous intéresser !!!");
+						                                 new InternetAddress(membre.getMail(), membre.getNom()));
+						                String subject = "Une nouvelle activitée qui peut vous intéresser !!!";
+						                msg.setSubject(subject);
+
 						                msg.setText(message);
+						              
 						                Transport.send(msg);
+						               
 						            } catch (MessagingException e) {
 						                e.printStackTrace();
 						            }

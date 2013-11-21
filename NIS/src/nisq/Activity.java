@@ -18,7 +18,6 @@ public class Activity {
     String dateCreation; 
     String date; // dd/mm/aaaa hh/mm
     List<Key<Membre>> participant;
-    int places; // nombres max de participants
     int placesRest; // nombres de places restantes
      
     private Activity(){}
@@ -28,7 +27,7 @@ public class Activity {
     		String localisation, 
     		String dateCreation,
     		String date,
-    		int places,
+    		List<Key<Membre>> participant,
     		int placesRest	)
     {
     this.parent = parent;
@@ -36,9 +35,8 @@ public class Activity {
     this.localisation = localisation;
     this.date = date;
     this.dateCreation = dateCreation;
-    this.participant = new LinkedList();
+    this.participant = participant;
     this.participant.add(parent);
-    this.places = places;
     this.placesRest = placesRest;
     	
     }
@@ -84,11 +82,6 @@ public class Activity {
 	public void setParticipant(List<Key<Membre>> participant) {
 		this.participant = participant;
 	}
-	public int getPlaces() {
-		return places;
-	}
-	public void setPlaces(int places) {
-		this.places = places;
-	} 
+
 
 }

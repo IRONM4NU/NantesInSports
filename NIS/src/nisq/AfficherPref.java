@@ -49,6 +49,7 @@ public class AfficherPref extends HttpServlet {
 	        		        	
 	        	/* Récupération et affichage des prefernces du membres connecté*/
 	        	List<Preference> preferences = ofy().load().type(Preference.class).ancestor(KeyFactory.createKey("Membre", user.getNickname())).list();
+	        		        	
 	        	String sport1 = preferences.get(0).getSport1();
 	        	String localisation1 = preferences.get(0).getLocalisation1();
 	        	String sport2 = preferences.get(0).getSport2();

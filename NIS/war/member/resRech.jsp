@@ -13,16 +13,16 @@
           <div class="box-image"> <a href="#"><img src="/stylesheets/nis.jpg" alt="Bienvenue" /></a> <span class="mark-featured notext">&nbsp;</span> </div>
           <div class="box-body">
             <h2>Bienvenue sur Nantes In Sports</h2>
-            <p class="text">Vous aimez le sport ? Vous aimez faire des rencontres ? Nantes In Sports est fait pour vous !!! Enjoy.  </p>
+            <p class="text">Actuellement nous sommes en pleine constructions du site. A très bientôt, pour partager plein d'activités sur Nantes. </p>
            </div>
           <div class="cl">&nbsp;</div>
         </div>
-      		
-        
-          <%  List<Activity> acts = (List<Activity>) request.getAttribute("acts");
-            for (Activity act : acts) { %>
-        
-        	
+      
+       
+         <%
+            List<Activity> acts = (List<Activity>) request.getAttribute("acts");
+            for (Activity act : acts) {
+        %>
 	        <div class="box">
 	        <div class="box-image"><img src="/stylesheets/<%= act.getSport() %>.jpg" alt="" /></a> </div>
 	        <div class="box-body">
@@ -34,6 +34,7 @@
 								
 	          </p> 
 			</div>
+			
 			<%if(act.getPlacesRest() > 0){ %>
 				<form action="/inscrit" method="get">
 				<input type="hidden"  name="sport"  value="<%= act.getSport() %>">
@@ -45,12 +46,10 @@
 			
 	        <div class="cl">&nbsp;</div>
 	        </div>
-	        
        <% } %>
         
         
-      		
-        </div>
+          </div>
         
         
 <jsp:include page="sidebar.jsp"></jsp:include>        
