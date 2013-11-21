@@ -24,17 +24,17 @@ public class Membre {
 		this.nom = nom;
 	}
 
-	public List<String> getPreference() {
+		public Preference getPreference() {
 		return preference;
 	}
 
-	public void setPreference(List<String> preference) {
+	public void setPreference(Preference preference) {
 		this.preference = preference;
 	}
 
 		@Id String id;
 	    String nom;
-	    List<String> preference;
+	    Preference preference;
 	    
 	    
 	    private Membre() {} // Obligatoire pour Objectify

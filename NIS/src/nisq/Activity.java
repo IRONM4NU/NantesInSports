@@ -15,27 +15,39 @@ public class Activity {
     
     String sport; // category 
     String localisation; // adresse 
-    String date; // dd/mm/aaaa
+    String dateCreation; 
+    String date; // dd/mm/aaaa hh/mm
     List<Key<Membre>> participant;
-    int places; // nombres max de participants 
+    int places; // nombres max de participants
+    int placesRest; // nombres de places restantes
      
     private Activity(){}
     public Activity(
     		Key<Membre> parent,
     		String sport,
     		String localisation, 
+    		String dateCreation,
     		String date,
-    		int places )
+    		int places,
+    		int placesRest	)
     {
     this.parent = parent;
     this.sport = sport;
     this.localisation = localisation;
     this.date = date;
+    this.dateCreation = dateCreation;
     this.participant = new LinkedList();
     this.participant.add(parent);
     this.places = places;
+    this.placesRest = placesRest;
     	
     }
+	public String getDateCreation() {
+		return dateCreation;
+	}
+	public void setDateCreation(String dateCréation) {
+		this.dateCreation = dateCréation;
+	}
 	public Key<Membre> getParent() {
 		return parent;
 	}
@@ -47,6 +59,12 @@ public class Activity {
 	}
 	public void setSport(String sport) {
 		this.sport = sport;
+	}
+	public int getPlacesRest() {
+		return placesRest;
+	}
+	public void setPlacesRest(int placesRest) {
+		this.placesRest = placesRest;
 	}
 	public String getLocalisation() {
 		return localisation;

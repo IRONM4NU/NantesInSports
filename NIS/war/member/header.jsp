@@ -32,7 +32,7 @@
       <div class="shell">
         <div id="navigation">
           <ul>
-            <li><a href="/member/home.jsp" class="active">Home</a></li>
+            <li><a href="/nis" class="active">Home</a></li>
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/affichpref">Préférence</a></li>
           </ul>
@@ -50,7 +50,7 @@
         <div class="cl">&nbsp;</div>
         <div id="sub-nav">
           <ul>
-            <li><a href="/member/home.jsp" >Accueil</a></li>
+            <li><a href="/nis" >Accueil</a></li>
             <li><a href="/member/ajoutactivity.jsp" >Créer une activité</a></li>
             <li class="last"><a href="/member/ajouterpref.jsp">Mettre à jour mes préférences</a></li>
           </ul>

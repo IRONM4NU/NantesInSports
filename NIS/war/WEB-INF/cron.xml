@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
     <cron>
-        <url>/recache</url>
-        <description>Met à jour les activitées sur le sites</description>
-        <schedule>every monday 09:00</schedule>
+        <url>/mail</url>
+        <description>Envoi un mail axu utilisateurs qui sont concerné par une activité créer la veille </description>
+        <schedule>every day 03:00</schedule>
     </cron>
     <cron>
         <url>/rapport</url>

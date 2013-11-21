@@ -48,10 +48,13 @@ public class AjoutPref extends HttpServlet {
             //response.getWriter().println("Hello, " + user.getNickname() + listActivity);
 
 	        if (user != null) {
+	        	// Récupère toutes les armes qui ont pour ancêtre mon objet personnage
+	        	
 	            
 	        	try {
 	        		Key<Membre> cleParent = Key.create(Membre.class, user.getNickname());
 	        		Membre membre =  ofy().load().key(cleParent).now();
+	        		boolean pref = ofy().load().type(Preference.class).ancestor(cleParent).list().isEmpty();
 	        		
 	        		String sport1 = request.getParameter( "sport1" );
 		            String localisation1 = request.getParameter( "localisation1" );
@@ -61,9 +64,15 @@ public class AjoutPref extends HttpServlet {
 		            
 		            String sport3 = request.getParameter( "sport3" );
 		            String localisation3 = request.getParameter( "localisation3" );
-		       
-			        Preference p = new Preference(cleParent, sport1, localisation1, sport2, localisation2, sport3, localisation3);
-			        ofy().save().entity(p).now(); // enregistrement des préférence dans le datastore
+	        		
+	        		// Création des préférences
+	        		if( !pref){ // mise à jour
+	        			Iterable<Key<Preference>> clesPreference = ofy().load().type(Preference.class).ancestor(cleParent).keys();
+	        			ofy().delete().keys(clesPreference);// suppression des anciennes prefs	
+	        		}
+	        		
+	        		Preference p = new Preference(cleParent, sport1, localisation1, sport2, localisation2, sport3, localisation3);
+			        ofy().save().entity(p).now(); // enregistrement des préférences dans le datastore
 		                
 	            	this.getServletContext().getRequestDispatcher( "/affichpref" ).forward( request, response );
 				} catch (ServletException e) {

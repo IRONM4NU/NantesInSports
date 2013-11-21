@@ -8,6 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -52,13 +55,18 @@ public class AjoutActivServlet extends HttpServlet {
 	        		Key<Membre> cleParent = Key.create(Membre.class, user.getNickname());
 	        		Membre membre =  ofy().load().key(cleParent).now();
 	        		
+	        		 DateFormat format = new SimpleDateFormat("dd/MM/yyyy"); // change le format de la date !!!
+	        		 
+	        		
 	        		String sport = request.getParameter( "sport" );
 		            String localisation = request.getParameter( "localisation" );
 		            String date = request.getParameter( "date" );
+		            String dateCreation = format.format(new Date());
 		            int places = Integer.parseInt(request.getParameter("places"));
+		            int placesRest = Integer.parseInt(request.getParameter("placesRest"));
 
 		            if(ofy().load().type(Activity.class).filter("date",date).filter("localisation", localisation).list().isEmpty()) {
-			            Activity a = new Activity(cleParent, sport, localisation, date, places );
+			            Activity a = new Activity(cleParent, sport, localisation, dateCreation, date, places, placesRest);
 			            ofy().save().entity(a); // enregistrement de l'activité dans le datastore
 		            }    
 		            String mes = sport + " " + localisation + " " + date + " " +  places + " .";

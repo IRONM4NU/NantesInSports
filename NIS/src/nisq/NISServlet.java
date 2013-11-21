@@ -29,6 +29,7 @@ public class NISServlet extends HttpServlet {
 	
 	  static {
 	        ObjectifyService.register(Membre.class); // Fait connaître votre classe-entité à Objectify
+	        ObjectifyService.register(Activity.class); // Fait connaître votre classe-entité à Objectify
 	    }
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -36,30 +37,18 @@ public class NISServlet extends HttpServlet {
 					
 		    UserService userService = UserServiceFactory.getUserService();
 	        User user = userService.getCurrentUser();
-
-	        if (user != null) {
-	        	
-	        	
-	        	/* Récupération et affichage des membres du sites
-	        	List<Membre> membres = ofy().load().type(Membre.class).list();
-	        	String listMembres = "";
-	        	for(Membre membre : membres){
-	        		listMembres +=  membre.getNom() + " ";
-	        		
-	        	}
 	        
-	        	resp.setContentType("text/plain");
-	            resp.getWriter().println("Hello, " + user.getNickname() + listMembres);*/
-	            
+	        // Si le membre est connecté (compte google)
+	        if (user != null) {
+	          // Si il s'agit de sa première connexion	        
 	          if(ofy().load().type(Membre.class).filter("id",user.getUserId()).list().isEmpty()) {
 	           
 	           // ajout d'un nouveau membre 
 	           Membre m = new Membre(user.getNickname(),user.getUserId());
-	           ofy().save().entity(m); // enregistrement du membre sur le datastore
-	            	
-	           //req.setAttribute("membres", listMembres);	
+	           ofy().save().entity(m); // enregistrement du membre sur le datastore	
 	            	
 		            try {
+		            	// envoi d'un mail de bienvenue
 		                Properties props = new Properties();
 		                Session session = Session.getDefaultInstance(props, null);
 		                 
@@ -75,17 +64,25 @@ public class NISServlet extends HttpServlet {
 		            } catch (MessagingException e) {
 		                e.printStackTrace();
 		            }
-	          	}
-	          else {
-	            	
-	          		}
-		            //resp.sendRedirect("./member/nis.jsp");
-	          try {
-				this.getServletContext().getRequestDispatcher("/member/ajouterpref.jsp").forward(req, resp);
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		            try {
+						this.getServletContext().getRequestDispatcher("/member/ajouterpref.jsp").forward(req, resp);
+					} catch (ServletException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	          } else {
+	        	  
+	        	  	// Récupération des activitées qui auront lieu le plus rapidement
+		        	List<Activity> acts = ofy().load().type(Activity.class).order("date").limit(5).list();
+		        	req.setAttribute( "acts", acts );       		
+	        	  
+	        	  try {
+	  					this.getServletContext().getRequestDispatcher("/member/home.jsp").forward(req, resp);
+	  				} catch (ServletException e) {
+	  				
+	  					e.printStackTrace();
+	  				}
+	          }
 	        } else {
 	            resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
 	        }
