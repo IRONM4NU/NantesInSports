@@ -40,7 +40,7 @@
 				<input type="hidden"  name="sport"  value="<%= act.getSport() %>">
 				<input type="hidden"  name="localisation"  value="<%= act.getLocalisation() %>">
 				<input type="hidden"  name="date"  value="<%= act.getDate() %>">
-				<input type="submit"  value="S'inscrire">
+				<input type="submit"  value="S'inscrire" style="border: none;background : black;font-size:15px;color:#ffa200;">
 				</form>
 			<%} %>
 			

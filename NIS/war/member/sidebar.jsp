@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <div id="sidebar" class="right">
 	<%
-		int i =(int) (Math.random() * 6 ); 
+		int i =(int) (Math.random() * 8 ); 
 		String author ="";
 		String citation ="";
 		switch (i) 
@@ -13,6 +13,8 @@
 		case 3:  author = "Eric Cantona"; citation ="Les Anglais ont inventé le foot, les Français l'ont organisé, les Italiens le mettent en scène."; break; 
 		case 4:  author = "Mohammed Ali"; citation ="Qui a la même vision du monde à vingt ans qu'à cinquante, a perdu trente ans de sa vie."; break; 
 		case 5:  author = "Magic Johnson"; citation ="Zidane, c'est moi et Michael Jordan réunis."; break; 
+		case 6: author ="Diego Maradona"; citation ="Arriver dans la surface et ne pas pouvoir tirer au but, c'est comme danser avec sa soeur.";break;
+		case 7: author ="Usain Bolt" ; citation ="Je suis une légende vivante"; break;
 		}
 	%>
 

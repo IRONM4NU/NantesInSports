@@ -2,6 +2,7 @@ package nisq;
 
 import nisq.Membre;
 
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.*;
 
@@ -61,11 +62,13 @@ import com.google.appengine.api.users.UserServiceFactory;
 		           	List<Activity> acts = ofy().load().type(Activity.class).filter("dateCreation",dateVeille).list();           
 		        	for(Activity activity : acts){     		
 		        		String sport = activity.getSport();
+		        		System.out.println(sport);
 		        		String local = activity.getLocalisation();
 		        		String date = activity.getDate();
 		        		
 		        		List<Membre> membres = ofy().load().type(Membre.class).list();
 		        		for(Membre membre : membres){
+		        			System.out.println(membre.getNom());
 		        			// Récupère la liste(à un seul élément) des préférences du membre
 		        			List<Preference> preferences = ofy().load().type(Preference.class).ancestor(KeyFactory.createKey("Membre", membre.getNom())).list();    		
 		        			
@@ -101,7 +104,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 						               
 						                Session session = Session.getDefaultInstance(props, null);
 						             
-						                String message = " Bonjour, une activitée : " + sport + " qui aura lieu à : " + local + "  le " + date + ", a été créer sur Nantes In Sports ";
+						                String message = " Bonjour, une activitee : " + sport + " qui aura lieu a : " + local + "  le " + date + ", a ete creer sur Nantes In Sports ";
 						               
 						                Message msg = new MimeMessage(session);
 
@@ -111,7 +114,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 						                System.out.println(membre.getNom());
 						                msg.addRecipient(Message.RecipientType.TO,
 						                                 new InternetAddress(membre.getMail(), membre.getNom()));
-						                String subject = "Une nouvelle activitée qui peut vous intéresser !!!";
+						                String subject = "Une nouvelle activitee qui peut vous interesser !!!";
 						                msg.setSubject(subject);
 
 						                msg.setText(message);
@@ -127,7 +130,11 @@ import com.google.appengine.api.users.UserServiceFactory;
 			        	}//endfor
 			        		
 		        	}//endfor
+		        	
+		        	Iterable<Key<Activity>> clesActivity= ofy().load().type(Activity.class).filter("date <",dateVeille).keys();
+        			ofy().delete().keys(clesActivity);// suppression des activitées qui on eu lieu la veille.
 		        }//endif
+		        
 			}//endFonction   	
 		        	
 		}

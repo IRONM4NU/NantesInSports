@@ -6,10 +6,4 @@
         <schedule>every day 03:00</schedule>
         <timezone>Europe/Paris</timezone>
     </cron>
-    <cron>
-        <url>/rapport</url>
-        <description>Envoie un rapport hebdomadaire</description>
-        <schedule>every monday 09:00</schedule>
-        <timezone>Europe/Paris</timezone>
-    </cron>
 </cronentries>

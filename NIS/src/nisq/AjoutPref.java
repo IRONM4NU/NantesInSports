@@ -79,28 +79,6 @@ public class AjoutPref extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}	       	    
-	        /*    
-	            // envoie du mail de confirmation
-	            try {
-	                Properties props = new Properties();
-	                Session session = Session.getDefaultInstance(props, null);
-	                 
-	                String message = " Vous venez d'ajoutez l'activité "+ req.getAttribute("title") +" à votre compte. A bientôt sur Nantes in Sports." ;
-	                 
-	                Message msg = new MimeMessage(session);
-	                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
-	                msg.addRecipient(Message.RecipientType.TO,
-	                                 new InternetAddress(user.getEmail(), user.getNickname()));
-	                msg.setSubject("Ajout d'une activité sur votre compte sur Nantes in Sports !");
-	                msg.setText(message);
-	                Transport.send(msg);
-	            } catch (MessagingException e) {
-	                e.printStackTrace();
-	            }
-	            resp.sendRedirect("./member/nis.jsp");
-	        } else {
-	            resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-	        }*/
 	        }
 	     }
 	}

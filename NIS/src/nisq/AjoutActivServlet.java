@@ -75,11 +75,11 @@ public class AjoutActivServlet extends HttpServlet {
 		            String mes = sport + " " + localisation + " " + date + " " +  placesRest + " .";
 		            
 		            request.setAttribute( "mes", mes );
-		                        
+		          /*              
 		          //Récupération des membres
 	        		List<Membre> membres = ofy().load().type(Membre.class).list();
 	        		for(Membre membre : membres){
-	        			
+	        			System.out.println(membre.getNom());
 	        			// Récupère la liste(à un seul élément) des préférences du membre
 	        			List<Preference> preferences = ofy().load().type(Preference.class).ancestor(KeyFactory.createKey("Membre", membre.getNom())).list();    		
 	        			
@@ -93,18 +93,19 @@ public class AjoutActivServlet extends HttpServlet {
 		        		
 		        		boolean envoiMail =false;
 		        		
-		        		if(sport == sportM1){
-		        			if(localisation == localM1){
+		        		
+		        		if(sport.equals(sportM1)){
+		        			if(localisation.equals(localM1)){
 		        				envoiMail = true;
 		        			}
 		        		}
-		        		if(sport == sportM2){
-		        			if(localisation == localM2){
+		        		if(sport.equals(sportM2)){
+		           			if(localisation.equals(localM1)){
 		        				envoiMail = true;
 		        			}
 		        		}
-		        		if(sport == sportM3){
-		        			if(localisation == localM3){
+		        		if(sport.equals(sportM3)){
+		        			if(localisation.equals(localM1)){
 		        				envoiMail = true;
 		        			}
 		        		}
@@ -135,38 +136,17 @@ public class AjoutActivServlet extends HttpServlet {
 					            } catch (MessagingException e) {
 					                e.printStackTrace();
 					            }
-		        		}	
+		        		}
 		        			
 		        			
 		        	}//endfor
-		            
+		            */
 	            	this.getServletContext().getRequestDispatcher( "/member/newactivity.jsp" ).forward( request, response );
 				} catch (ServletException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}	       	    
-	        /*    
-	            // envoie du mail de confirmation
-	            try {
-	                Properties props = new Properties();
-	                Session session = Session.getDefaultInstance(props, null);
-	                 
-	                String message = " Vous venez d'ajoutez l'activité "+ req.getAttribute("title") +" à votre compte. A bientôt sur Nantes in Sports." ;
-	                 
-	                Message msg = new MimeMessage(session);
-	                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
-	                msg.addRecipient(Message.RecipientType.TO,
-	                                 new InternetAddress(user.getEmail(), user.getNickname()));
-	                msg.setSubject("Ajout d'une activité sur votre compte sur Nantes in Sports !");
-	                msg.setText(message);
-	                Transport.send(msg);
-	            } catch (MessagingException e) {
-	                e.printStackTrace();
-	            }
-	            resp.sendRedirect("./member/nis.jsp");
-	        } else {
-	            resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-	        }*/
+
 	        }
 	     }
 	}

@@ -13,6 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -39,6 +42,15 @@ public class NISServlet extends HttpServlet {
 		    UserService userService = UserServiceFactory.getUserService();
 	        User user = userService.getCurrentUser();
 	        
+	        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			//Initialisation de la date J
+			String dateJour = formatter.format(new Date());
+			//ajout de l'heure
+			java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm");
+			String texte_date = sdf.format(new Date());
+			dateJour+= " "+texte_date;
+
+	        
 	        // Si le membre est connecté (compte google)
 	        if (user != null) {
 	          // Si il s'agit de sa première connexion	        
@@ -53,7 +65,7 @@ public class NISServlet extends HttpServlet {
 		                Properties props = new Properties();
 		                Session session = Session.getDefaultInstance(props, null);
 		                 
-		                String message = "  Merci de vous êtes inscrit. Maintenant vous pouvez organiser des activitées sportives sur Nantes.";
+		                String message = "  Merci de vous etes inscrit. Maintenant vous pouvez organiser des activitees sportives sur Nantes.";
 		                 
 		                Message msg = new MimeMessage(session);
 		                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
@@ -72,9 +84,8 @@ public class NISServlet extends HttpServlet {
 						e.printStackTrace();
 					}
 	          } else {
-	        	  
 	        	  	// Récupération des activitées qui auront lieu le plus rapidement
-		        	List<Activity> acts = ofy().load().type(Activity.class).order("date").limit(5).list();
+		        	List<Activity> acts = ofy().load().type(Activity.class).filter("date >", dateJour).order("date").limit(5).list();
 		        	req.setAttribute( "acts", acts );       		
 	        	  
 	        	  try {
