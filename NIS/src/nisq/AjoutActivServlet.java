@@ -75,7 +75,7 @@ public class AjoutActivServlet extends HttpServlet {
 		            String mes = sport + " " + localisation + " " + date + " " +  placesRest + " .";
 		            
 		            request.setAttribute( "mes", mes );
-		          /*              
+		                      
 		          //Récupération des membres
 	        		List<Membre> membres = ofy().load().type(Membre.class).list();
 	        		for(Membre membre : membres){
@@ -140,7 +140,7 @@ public class AjoutActivServlet extends HttpServlet {
 		        			
 		        			
 		        	}//endfor
-		            */
+		           
 	            	this.getServletContext().getRequestDispatcher( "/member/newactivity.jsp" ).forward( request, response );
 				} catch (ServletException e) {
 					// TODO Auto-generated catch block

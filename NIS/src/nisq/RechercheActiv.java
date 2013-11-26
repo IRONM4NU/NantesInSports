@@ -55,8 +55,9 @@ public class RechercheActiv extends HttpServlet {
 				dateJour+= " "+texte_date;
 	            
 	        	  	// Récupération des activitées qui auront lieu le plus rapidement
-		        	List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).filter("date >", dateJour).order("date").limit(20).list();
-		        	
+		        	// List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).filter("date >", dateJour).order("date").limit(20).list();
+				List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).order("date").limit(20).list();
+				
 		        	if( ! acts.isEmpty()){
 		        		req.setAttribute( "acts", acts );       		
 			        	  

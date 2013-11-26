@@ -120,7 +120,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 						                msg.setText(message);
 						              
 						                Transport.send(msg);
-						               
+						               System.out.println(message);
 						            } catch (MessagingException e) {
 						                e.printStackTrace();
 						            }
