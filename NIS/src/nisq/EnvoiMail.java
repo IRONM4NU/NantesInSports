@@ -43,7 +43,10 @@ import com.google.appengine.api.users.UserServiceFactory;
 				throws IOException {
 				
 			// Création de la date de la veille !!!!
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				//SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+			
 				//Initialisation de la date J
 				String dateJour = formatter.format(new Date());
 				//Initialisation du Calendar
@@ -52,6 +55,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 				cal.add(Calendar.DAY_OF_MONTH, -1);
 				//Formattage de la date J-1
 				String dateVeille = formatter.format(cal.getTime());
+				
 							
 			    UserService userService = UserServiceFactory.getUserService();
 		        User user = userService.getCurrentUser();
@@ -59,10 +63,11 @@ import com.google.appengine.api.users.UserServiceFactory;
 		        if (user != null) {
 		        	
 		        	// Récupération des activity créer la veille
+		        	//List<Activity> acts = ofy().load().type(Activity.class).list(); 
 		           	List<Activity> acts = ofy().load().type(Activity.class).filter("dateCreation",dateVeille).list();           
 		        	for(Activity activity : acts){     		
 		        		String sport = activity.getSport();
-		        		System.out.println(sport);
+		           		System.out.println(sport);
 		        		String local = activity.getLocalisation();
 		        		String date = activity.getDate();
 		        		
@@ -130,8 +135,11 @@ import com.google.appengine.api.users.UserServiceFactory;
 			        	}//endfor
 			        		
 		        	}//endfor
+		        	//System.out.println(dateVeille);
+		        	dateVeille += " 23:59"; //sans l'ajout du champs heure la comparaison de chaîne pour la suppression ne fonctionne pas.
+		        	//System.out.println(dateVeille);
 		        	
-		        	Iterable<Key<Activity>> clesActivity= ofy().load().type(Activity.class).filter("date <",dateVeille).keys();
+		        	Iterable<Key<Activity>> clesActivity= ofy().load().type(Activity.class).filter("date <", dateVeille).keys();
         			ofy().delete().keys(clesActivity);// suppression des activitées qui on eu lieu la veille.
 		        }//endif
 		        

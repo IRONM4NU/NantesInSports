@@ -12,10 +12,17 @@
         <div class="box box-featured">
           <div class="box-image"> <a href="#"><img src="/stylesheets/nis.jpg" alt="Bienvenue" /></a> <span class="mark-featured notext">&nbsp;</span> </div>
           <div class="box-body">
-            <h2>Vous êtes déjà inscrit à cette activitée ! </h2>
+            <h2>Bienvenue sur Nantes In Sports</h2>
+            <p class="text">Actuellement nous sommes en pleine constructions du site. A très bientôt, pour partager plein d'activités sur Nantes. </p>
            </div>
           <div class="cl">&nbsp;</div>
         </div>
+
+	        <div class="box">
+	        <div class="box-body">
+	          <h2><%= request.getAttribute("mess") %></h2>
+	          
+	        <div class="cl">&nbsp;</div>
 	        </div>
 			</div>
            </div>

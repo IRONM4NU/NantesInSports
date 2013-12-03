@@ -111,7 +111,8 @@
 				           $.datepicker.setDefaults( $.datepicker.regional['fr']);	
 				           
 				           $('#date').datetimepicker({
-				        	   dateFormat : 'dd/mm/yy',
+				        	   <!--dateFormat : 'dd/mm/yy',-->
+				        	   dateFormat : 'yy/mm/dd',
 				        	   minDate : 0
 				           });
 				        });

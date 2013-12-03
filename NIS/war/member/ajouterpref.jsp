@@ -263,7 +263,7 @@
                     <br />
      
                 </fieldset>
-                <input type="submit" value="Valider"  />
+                <input type="submit" value="Valider" style="border: none;background : black;font-size:15px;color:#ffa200;"  />
             </form>
         </div>     
         </div>   

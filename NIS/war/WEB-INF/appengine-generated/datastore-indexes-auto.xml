@@ -1,12 +1,4 @@
-<!-- Indices written at Tue, 26 Nov 2013 15:55:54 CET -->
+<!-- Indices written at Tue, 3 Dec 2013 17:25:25 CET -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 3 times in query history -->
-    <datastore-index kind="Activity" ancestor="false" source="auto">
-        <property name="localisation" direction="asc"/>
-        <property name="sport" direction="asc"/>
-        <property name="date" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>

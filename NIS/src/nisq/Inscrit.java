@@ -55,59 +55,65 @@ public class Inscrit extends HttpServlet {
 		        		Key<Membre> cle = Key.create(Membre.class, user.getNickname());
 		        		Membre member =  ofy().load().key(cle).now();
 		        		
+		        		String mess ="Vous êtes déjà inscrit à cette activitée";
+		        		
 		        		List<Key<Membre>> parts =activitys.get(0).getParticipant();
-		        		parts.add(cle); // ajout du membre à l'activitée
-		        				        		
-		        		String dateCreation = activitys.get(0).getDateCreation();
-		        		Key<Membre> key = activitys.get(0).getParent();
-		        		int placesRest = activitys.get(0).getPlacesRest() -1;
-		        		
-		        		Activity act = new Activity(
-		        	    		 key,
-		        	    		 sport,
-		        	    		 localisation, 
-		        	    		 dateCreation,
-		        	    		 date,
-		        	    		 parts,
-		        	    		 placesRest	);
-		        	
-		        		String id = user.getUserId();
+		        		if( !parts.contains(cle)){
+		        			mess = "Merci de vous être inscrit pour une activitée !";
+		        			parts.add(cle); // ajout du membre à l'activitée
+			        		
+			        		String dateCreation = activitys.get(0).getDateCreation();
+			        		Key<Membre> key = activitys.get(0).getParent();
+			        		int placesRest = activitys.get(0).getPlacesRest() -1;
+			        		
+			        		Activity act = new Activity(
+			        	    		 key,
+			        	    		 sport,
+			        	    		 localisation, 
+			        	    		 dateCreation,
+			        	    		 date,
+			        	    		 parts,
+			        	    		 placesRest	);
+			        	
+			        		String id = user.getUserId();
 
-		        		String mail =user.getEmail();
-		        		String nom =user.getNickname();
+			        		String mail =user.getEmail();
+			        		String nom =user.getNickname();
 
-		        		Membre mem = new Membre(nom,id,mail);
+			        		Membre mem = new Membre(nom,id,mail);
 
-		        		ofy().delete().entities(activitys).now();
+			        		ofy().delete().entities(activitys).now();
 
-		        		ofy().save().entity(act).now();
-		        		
-		        		try {
-			                Properties props = new Properties();
-			               
-			                Session session = Session.getDefaultInstance(props, null);
-			             
-			                String message = " Bonjour, vous venez de vous inscrire pour faire : " + sport + " qui aura lieu à : " + localisation + "  le " + date + ", à bientôt sur Nantes In Sports ";
-			                String subject = "Vous vous êtes inscrit à une activitée !!!";
-			                
-			                Message msg = new MimeMessage(session);
+			        		ofy().save().entity(act).now();
+			        		
+			        		try {
+				                Properties props = new Properties();
+				               
+				                Session session = Session.getDefaultInstance(props, null);
+				             
+				                String message = " Bonjour, vous venez de vous inscrire pour faire : " + sport + " qui aura lieu à : " + localisation + "  le " + date + ", à bientôt sur Nantes In Sports ";
+				                String subject = "Vous vous êtes inscrit à une activitée !!!";
+				                
+				                Message msg = new MimeMessage(session);
 
-			                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
-			               
-			                msg.addRecipient(Message.RecipientType.TO,
-			                                 new InternetAddress(user.getEmail(), user.getNickname()));
-			             
-			                msg.setSubject(subject);
+				                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
+				               
+				                msg.addRecipient(Message.RecipientType.TO,
+				                                 new InternetAddress(user.getEmail(), user.getNickname()));
+				             
+				                msg.setSubject(subject);
 
-			                msg.setText(message);
-			              
-			                Transport.send(msg);
-			               
-			            } catch (MessagingException e) {
-			                e.printStackTrace();
-			            }
-			             		            
-		            	this.getServletContext().getRequestDispatcher( "/nis" ).forward( request, response );
+				                msg.setText(message);
+				              
+				                Transport.send(msg);
+				               
+				            } catch (MessagingException e) {
+				                e.printStackTrace();
+				            }
+
+		        		}
+		        		request.setAttribute( "mess", mess );      		            
+		            	this.getServletContext().getRequestDispatcher( "/member/insOk.jsp" ).forward( request, response );
 					} catch (ServletException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

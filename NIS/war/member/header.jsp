@@ -35,16 +35,16 @@
             <li><a href="/nis" >Home</a></li>
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/affichpref">Préférence</a></li>
-           <!-- <li><a href="/mail">Mail</a></li>-->
+           <!--<li><a href="/mail">Mail</a></li>-->
           </ul>
           <div class="cl">&nbsp;</div>
         </div>
          <% if (userService.getCurrentUser() == null) { %>
         
-          	<a class = "subscribe" href="<%= userService.createLoginURL("/") %>">Connection</a>
+          	<a class = "subscribe" href="<%= userService.createLoginURL("/") %>">Connexion</a>
         <% }
         else { %>   
-             <a class = "deconnection" href="<%= userService.createLogoutURL("/indexNis.html") %>">Déconnection</a>
+             <a class = "deconnection" href="<%= userService.createLogoutURL("/indexNis.html") %>">Déconnexion</a>
         <% } %>
         <div class="cl">&nbsp;</div>
         <h1 id="logo" class="notext"><a href="#">Buzz</a></h1>
@@ -56,6 +56,3 @@
             <li class="last"><a href="/member/ajouterpref.jsp">Mettre à jour mes préférences</a></li>
           </ul>
         </div>
-
-         
-

@@ -42,7 +42,8 @@ public class NISServlet extends HttpServlet {
 		    UserService userService = UserServiceFactory.getUserService();
 	        User user = userService.getCurrentUser();
 	        
-	        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	        //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 			//Initialisation de la date J
 			String dateJour = formatter.format(new Date());
 			//ajout de l'heure

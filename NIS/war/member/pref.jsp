@@ -12,6 +12,7 @@
     <div class="shell">
     <div id="content" class="left">
           <div class="box-body">
+          <div class="box">
             <h2>Vos Préférence</h2>
             <p class="text"> Sports 1 : ${ sport1 }</p>
             <p class="text"> Localisation 1 : ${ localisation1 }</p>
@@ -19,12 +20,10 @@
             <p class="text"> Localisation 2 : ${ localisation2 }</p>
             <p class="text"> Sports 3 : ${ sport3 }</p>
             <p class="text"> Localisation 3 : ${ localisation3 }</p>
-          
-        	 <p class="text"> Veuillez mettre à jour vos préférences en cliquant <a href="/member/ajouterpref.jsp">ici</a> </p>
          
-         
-           </div>
-          <div class="cl">&nbsp;</div>
+         </div>
+          </div>
+         <div class="cl">&nbsp;</div>
         </div>
         </div>
 <jsp:include page="sidebar.jsp"></jsp:include>        

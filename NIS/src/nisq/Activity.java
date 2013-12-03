@@ -16,7 +16,7 @@ public class Activity {
     String sport; // category 
     String localisation; // adresse 
     String dateCreation; 
-    String date; // dd/mm/aaaa hh/mm
+    String date; // dd/mm/aaaa hh/mm // yyyy/mm/dd
     List<Key<Membre>> participant;
     int placesRest; // nombres de places restantes
      

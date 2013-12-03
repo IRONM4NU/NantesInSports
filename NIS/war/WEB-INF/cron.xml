@@ -2,7 +2,7 @@
 <cronentries>
     <cron>
         <url>/mail</url>
-        <description>Envoi un mail axu utilisateurs qui sont concerné par une activité créer la veille </description>
+        <description>Envoi un mail aux utilisateurs qui sont concerné par une activitée créer la veille </description>
         <schedule>every day 03:00</schedule>
         <timezone>Europe/Paris</timezone>
     </cron>

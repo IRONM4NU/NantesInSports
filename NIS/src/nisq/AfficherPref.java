@@ -49,27 +49,38 @@ public class AfficherPref extends HttpServlet {
 	        		        	
 	        	/* Récupération et affichage des prefernces du membres connecté*/
 	        	List<Preference> preferences = ofy().load().type(Preference.class).ancestor(KeyFactory.createKey("Membre", user.getNickname())).list();
-	        		        	
-	        	String sport1 = preferences.get(0).getSport1();
-	        	String localisation1 = preferences.get(0).getLocalisation1();
-	        	String sport2 = preferences.get(0).getSport2();
-	        	String localisation2 = preferences.get(0).getLocalisation2();
-	        	String sport3 = preferences.get(0).getSport3();
-	        	String localisation3 = preferences.get(0).getLocalisation3();
 	        	
-	        	req.setAttribute( "sport1", sport1 );
-	        	req.setAttribute( "localisation1", localisation1 );
-	        	req.setAttribute( "sport2", sport2 );
-	        	req.setAttribute( "localisation2", localisation2 );
-	        	req.setAttribute( "sport3", sport3 );
-	        	req.setAttribute( "localisation3", localisation3 );
-	        	       	
-            	try {
-					this.getServletContext().getRequestDispatcher( "/member/pref.jsp" ).forward( req, resp );
-				} catch (ServletException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	        	if(preferences.isEmpty()){
+	        		try {
+						this.getServletContext().getRequestDispatcher( "/member/ajouterpref.jsp" ).forward( req, resp );
+					} catch (ServletException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	        	} else {
+	        		String sport1 = preferences.get(0).getSport1();
+		        	String localisation1 = preferences.get(0).getLocalisation1();
+		        	String sport2 = preferences.get(0).getSport2();
+		        	String localisation2 = preferences.get(0).getLocalisation2();
+		        	String sport3 = preferences.get(0).getSport3();
+		        	String localisation3 = preferences.get(0).getLocalisation3();
+		        	
+		        	req.setAttribute( "sport1", sport1 );
+		        	req.setAttribute( "localisation1", localisation1 );
+		        	req.setAttribute( "sport2", sport2 );
+		        	req.setAttribute( "localisation2", localisation2 );
+		        	req.setAttribute( "sport3", sport3 );
+		        	req.setAttribute( "localisation3", localisation3 );
+		        	       	
+	            	try {
+						this.getServletContext().getRequestDispatcher( "/member/pref.jsp" ).forward( req, resp );
+					} catch (ServletException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	        	}
+	        	
+	        	
 	        } 
 	    }
 	}

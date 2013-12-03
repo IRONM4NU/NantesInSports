@@ -46,7 +46,8 @@ public class RechercheActiv extends HttpServlet {
 	        	String sport = req.getParameter( "sport" );
 	            String localisation = req.getParameter( "localisation" );
 	            
-	            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	            //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 	            //Initialisation de la date J
 				String dateJour = formatter.format(new Date());
 				//ajout de l'heure
@@ -55,8 +56,8 @@ public class RechercheActiv extends HttpServlet {
 				dateJour+= " "+texte_date;
 	            
 	        	  	// Récupération des activitées qui auront lieu le plus rapidement
-		        	// List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).filter("date >", dateJour).order("date").limit(20).list();
-				List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).order("date").limit(20).list();
+		        List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).filter("date >", dateJour).order("date").limit(20).list();
+				//List<Activity> acts = ofy().load().type(Activity.class).filter("sport", sport).filter("localisation", localisation).order("date").limit(20).list();
 				
 		        	if( ! acts.isEmpty()){
 		        		req.setAttribute( "acts", acts );       		

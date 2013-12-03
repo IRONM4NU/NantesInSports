@@ -3,6 +3,7 @@ package nisq;
 import com.googlecode.objectify.annotation.*;
 import java.util.*;
 
+
 @Entity
 @Index
 @Cache//utilisation de Memcache
