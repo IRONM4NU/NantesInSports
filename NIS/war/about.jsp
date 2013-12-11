@@ -25,6 +25,14 @@
            </div>
           <div class="cl">&nbsp;</div>
         </div>
-       </div>
+       <div class="box box-featured">
+        <div class="box-image"> <a href="#"><img src="css/images/github.png" alt="" /></a> <span class="mark-featured notext">&nbsp;</span> </div>
+          <div class="box-body">
+            <h2>Github</h2>
+           <p class="text">Le code de NIS est disponible sur Github, à l'adresse suivante : <a href="https://github.com/IRONM4NU/NantesInSports">NIS</a></p>
+           </div>
+          <div class="cl">&nbsp;</div>
+        </div>
+ 		</div>
 <jsp:include page="/member/sidebar.jsp"></jsp:include>        
 <jsp:include page="/member/footer.jsp"></jsp:include>

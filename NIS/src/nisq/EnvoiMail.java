@@ -65,6 +65,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 		        	// Récupération des activity créer la veille
 		        	//List<Activity> acts = ofy().load().type(Activity.class).list(); 
 		           	List<Activity> acts = ofy().load().type(Activity.class).filter("dateCreation",dateVeille).list();           
+		        	
 		        	for(Activity activity : acts){     		
 		        		String sport = activity.getSport();
 		           		System.out.println(sport);
@@ -109,7 +110,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 						               
 						                Session session = Session.getDefaultInstance(props, null);
 						             
-						                String message = " Bonjour, une activitee : " + sport + " qui aura lieu a : " + local + "  le " + date + ", a ete creer sur Nantes In Sports ";
+						                String message = " Bonjour, une activitée : " + sport + " qui aura lieu a : " + local + "  le " + date + ", a ete creer sur Nantes In Sports ";
 						               
 						                Message msg = new MimeMessage(session);
 
@@ -119,7 +120,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 						                System.out.println(membre.getNom());
 						                msg.addRecipient(Message.RecipientType.TO,
 						                                 new InternetAddress(membre.getMail(), membre.getNom()));
-						                String subject = "Une nouvelle activitee qui peut vous interesser !!!";
+						                String subject = "Une proposition !!!";
 						                msg.setSubject(subject);
 
 						                msg.setText(message);

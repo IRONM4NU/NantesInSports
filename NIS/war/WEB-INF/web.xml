@@ -21,6 +21,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>ActivMail</servlet-name>
+		<servlet-class>nisq.ActivMail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActivMail</servlet-name>
+		<url-pattern>/activmail</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
 		<servlet-name>Ins</servlet-name>
 		<servlet-class>nisq.Inscrit</servlet-class>
 	</servlet>

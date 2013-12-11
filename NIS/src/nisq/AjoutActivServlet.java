@@ -71,14 +71,17 @@ public class AjoutActivServlet extends HttpServlet {
 
 		            if(ofy().load().type(Activity.class).filter("date",date).filter("localisation", localisation).list().isEmpty()) {
 			            Activity a = new Activity(cleParent, sport, localisation, dateCreation, date, participant , placesRest);
-			            ofy().save().entity(a); // enregistrement de l'activité dans le datastore
+			            ofy().save().entity(a).now(); // enregistrement de l'activité dans le datastore
 		            }    
 		            String mes = sport + " " + localisation + " " + date + " " +  placesRest + " .";
 		            
 		            request.setAttribute( "mes", mes );
-		        /*              
+		            request.setAttribute( "sport", sport);
+		            request.setAttribute( "localisation", localisation );
+		            request.setAttribute( "date", date );
+		                         
 		          //Récupération des membres
-	        		List<Membre> membres = ofy().load().type(Membre.class).list();
+	        		/*List<Membre> membres = ofy().load().type(Membre.class).list();
 	        		if(!membres.isEmpty()){
 	        			for(Membre membre : membres){
 		        			System.out.println(membre.getNom());
@@ -113,10 +116,10 @@ public class AjoutActivServlet extends HttpServlet {
 			        			if(localisation.equals(localM3)){
 			        				envoiMail = true;
 			        			}
-			        		}
+			        		}*/
 
-			        		if(envoiMail){
-			        			// try {
+			        		//if(envoiMail){
+			        			/*try {
 						                Properties props = new Properties();
 						               
 						                Session session = Session.getDefaultInstance(props, null);
@@ -126,12 +129,8 @@ public class AjoutActivServlet extends HttpServlet {
 						                Message msg = new MimeMessage(session);
 
 						                msg.setFrom(new InternetAddress("galliotgreg@gmail.com", "Nantes in Sports"));
-						               
-						                //System.out.println(membre.getMail());
-						               // System.out.println(membre.getNom());
-						                msg.addRecipient(Message.RecipientType.TO,
-						                                // new InternetAddress(membre.getMail(), membre.getNom()));
-						                				new InternetAddress(adressMail));
+						
+						                msg.addRecipient(Message.RecipientType.TO, new InternetAddress(adressMail));
 						             
 						                msg.setSubject("Une nouvelle activitée qui peut vous intéresser !!!");
 
@@ -139,16 +138,17 @@ public class AjoutActivServlet extends HttpServlet {
 						              
 						                Transport.send(msg);
 						               
-						         //   } catch (MessagingException e) {
-						               // this.getServletContext().getRequestDispatcher( "/member/newactivity.jsp" ).forward( request, response );
-						          //  }
-			        		}
-	        			}//endfor		
-	        		}*/
-	            	this.getServletContext().getRequestDispatcher( "/member/newactivity.jsp" ).forward( request, response );
+						            } catch (MessagingException e) {
+						            }*/
+			        		//}
+	        			//}	
+	        		//}
+	            	//this.getServletContext().getRequestDispatcher( "/member/newactivity.jsp" ).forward( request, response );
+		            this.getServletContext().getRequestDispatcher( "/activmail" ).forward( request, response );
 				} catch (ServletException /*| MessagingException*/ e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					System.out.println(e.toString());
 				}	       	    
 
 	        }
