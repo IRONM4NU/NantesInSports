@@ -7,8 +7,18 @@ Utilisation des jeux de donnée de l'open data : http://data.nantes.fr/donnees/de
 Pour l'utilisation du datastore nous avons utilisé la bibliotèque objectify : https://code.google.com/p/objectify-appengine/wiki/Concepts?tm=6
 ***************************
 ***************************
-
+Description Fonctionnelle
+***************************
+Lors de la première inscription l'utilisateur accepte les droits google
+Ensuite on l'invite à renseigner ses préférences : 3 Sports et 3 Lieux, 1 sport pour chaque lieu
+Il arrive sur la page d'acceuil, où l'on affiche les 5 activitées qui auront lieux le plus rapidement dans le temps.
+Il peut, créer une activitée, mettre à jour ses préférences, et faire une recherche d'activitée.
+La création d'activitée est divisé en 4 : activitée, localisation, date, et places restantes.
+La mise à jour des préférences est divisé en 6, 3 Sport, 3 Lieux, 1 sport pour chaque lieu
+La recherche d'activitée, en fonction d'un sport et d'un lieu.
+***************************
 WORKING
+****************************
 Connection a l'appli via compte google
 Inscritption d'un nouveau membre dans le datastore
 Ajout des préférences d'un membre dans le datastore
@@ -25,9 +35,10 @@ Inscription d'un membre à une activitée, ce qui décrémente le nombre de place et
 Inscription une seul fois par activitée
 Envoi de mail au membre ayant pour préférence le sport et le lieu, qui est défini lors de la création d'une activitée(cronJobs)
 Suppresion des activitées qui ont eu lieu la veille(cronJob).
-
+********************
 NOT WORKING 
-Exception levé lors de l'envoi de mail dès la création de l'activitée,(http://blog.cloudme.org/2013/06/strange-exceptions-with-objectify-4-or-what-happens-if-you-query-unindexed-fields/)
+********************
+Exception levé lors de l'envoi de mail dès la création de l'activitée(mais l'activitée est créer et le mail est envoyé !!! ),(http://blog.cloudme.org/2013/06/strange-exceptions-with-objectify-4-or-what-happens-if-you-query-unindexed-fields/)
 
 (idée pour plus tard)
 Ajout du nom de la personne qui a créer l'activitée
