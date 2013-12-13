@@ -37,15 +37,15 @@ Modification des préférences d'un membre dans le datastore
 ****************************
 Création d'une activité dans le datastore :
 ****************************
-	Utilisation des données de l'open data pour :
+Utilisation des données de l'open data pour :
 ****************************	
 	- la ville de NANTES
 ****************************	
 	- les équipements publics
 ****************************
-	Utilisation de Jquery pour la date et l'heure
+Utilisation de Jquery pour la date et l'heure
 ****************************
-	Modification du format de date, car nous utilisons la comparaison de chaine de charactère
+Modification du format de date, car nous utilisons la comparaison de chaine de charactère
 ****************************
 Affichage des activités
 ****************************
