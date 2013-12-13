@@ -47,6 +47,7 @@ Ajout du nom de la personne qui a créer l'activité
 Ajout d'une page avec une calendrier sur lequel il y a les activités auquels le membre c'est inscrit
 Ajout d'une page avec une map google et les lieu de pratique de sport proposer sur NIS
 Ajout d'un chat pour chaque activité créé, pour faciliter les préparatifs
+Gestion des lieux en fonction du sport choisi.
 
 
 By Galliot Grégory, Turbe Emmanuel.
