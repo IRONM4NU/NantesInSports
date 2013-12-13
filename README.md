@@ -10,23 +10,23 @@ Pour l'utilisation du datastore nous avons utilisé la bibliotèque objectify : ht
 Description Fonctionnelle
 ***************************
 Lors de la première inscription l'utilisateur accepte les droits google
-**
+***************************
 Ensuite on l'invite à renseigner ses préférences : 3 Sports et 3 Lieux, 1 sport pour chaque lieu
-**
+***************************
 Il arrive sur la page d'acceuil, où l'on affiche les 5 activités qui auront lieux le plus rapidement dans le temps.
-**
+***************************
 Il peut, créer une activité, mettre à jour ses préférences, et faire une recherche d'activité.
-**
+***************************
 La création d'activité est divisé en 4 : activité, localisation, date, et places restantes.
-**
+***************************
 La mise à jour des préférences est divisé en 6, 3 Sport, 3 Lieux, 1 sport pour chaque lieu
-**
+***************************
 La recherche d'activité, en fonction d'un sport et d'un lieu.
 ***************************
 WORKING
 ****************************
 Connection a l'appli via compte google
-**
+***************************
 Envoi de mail une fois l'inscription effectué
 ****************************
 Inscritption d'un nouveau membre dans le datastore
