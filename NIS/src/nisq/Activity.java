@@ -8,7 +8,6 @@ import com.googlecode.objectify.annotation.*;
  
 @Entity
 @Index
-@Cache//utilisation de Memcache
 public class Activity {
     @Id Long id;
     @Parent Key<Membre> parent; // qui a creer l'événement

@@ -8,7 +8,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="box"> 
    <div class="box-body"> 
-      <h2>Activitée</h2>
+      <h2>Activité</h2>
          ${ mes }
    </div>     
 </div>   

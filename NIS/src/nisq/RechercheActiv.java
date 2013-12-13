@@ -69,7 +69,7 @@ public class RechercheActiv extends HttpServlet {
 			  					e.printStackTrace();
 			  				}
 		        	} else {
-		        		String mess = "Aucune activitée, n'hésitez pas à créer une.";
+		        		String mess = "Aucune activité, n'hésitez pas à créer une.";
 		        		req.setAttribute("mess", mess);
 		        		try {
 		  					this.getServletContext().getRequestDispatcher("/member/resSansRech.jsp").forward(req, resp);

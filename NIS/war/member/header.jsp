@@ -34,7 +34,7 @@
           <ul>
             <li><a href="/nis" >Home</a></li>
             <li><a href="/about.jsp">About</a></li>
-            <li><a href="/affichpref">Préférence</a></li>
+            <li><a href="/affichpref">Préférences</a></li>
            <!--<li><a href="/mail">Mail</a></li>  -->
           </ul>
           <div class="cl">&nbsp;</div>

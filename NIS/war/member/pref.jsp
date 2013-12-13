@@ -13,12 +13,12 @@
     <div id="content" class="left">
           <div class="box-body">
           <div class="box">
-            <h2>Vos Préférence</h2>
-            <p class="text"> Sports 1 : ${ sport1 }</p>
+            <h2>Vos Préférences</h2>
+            <p class="text"> Sport 1 : ${ sport1 }</p>
             <p class="text"> Localisation 1 : ${ localisation1 }</p>
-            <p class="text"> Sports 2 : ${ sport2 }</p>
+            <p class="text"> Sport 2 : ${ sport2 }</p>
             <p class="text"> Localisation 2 : ${ localisation2 }</p>
-            <p class="text"> Sports 3 : ${ sport3 }</p>
+            <p class="text"> Sport 3 : ${ sport3 }</p>
             <p class="text"> Localisation 3 : ${ localisation3 }</p>
          
          </div>

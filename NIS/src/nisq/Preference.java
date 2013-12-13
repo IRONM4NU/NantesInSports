@@ -9,7 +9,6 @@ import com.googlecode.objectify.annotation.*;
  
 @Entity
 @Index
-@Cache//utilisation de Memcache
 public class Preference {
 	
     @Id Long id;

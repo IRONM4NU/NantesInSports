@@ -21,9 +21,9 @@
 
 
        <div class="box">
-          <h2 class="title"><a href="/member/recherche.jsp" > Recherche Activitée</a></h2>
+          <h2 class="title"><a href="/member/recherche.jsp" > Recherche Activité</a></h2>
           <div class="widget-item">
-            <p> Envie de faire du sport ?<br /> Faites une recherche sur les activitées que les membres proposent.</p>
+            <p> Envie de faire du sport ?<br /> Faites une recherche sur les activités que les membres proposent.</p>
           </div>
         </div>
          

@@ -26,6 +26,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.ReadPolicy.Consistency;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -45,7 +46,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 			String sport = (String) req.getAttribute("sport");
 			String localisation = (String) req.getAttribute("localisation");
 			String date = (String) req.getAttribute("date");
-				
+			
 			//Récupération des membres
     		List<Membre> membres = ofy().load().type(Membre.class).list();
     		if(!membres.isEmpty()){
@@ -90,7 +91,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 				               
 				                Session session = Session.getDefaultInstance(props, null);
 				             
-				                String message = " Bonjour, une activitée : " + sport + " qui aura lieu à : " + localisation + "  le " + date + ", a été créer sur Nantes In Sports ";
+				                String message = " Bonjour, une activité : " + sport + " qui aura lieu à : " + localisation + "  le " + date + ", a été créer sur Nantes In Sports ";
 				               
 				                Message msg = new MimeMessage(session);
 

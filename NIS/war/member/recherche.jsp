@@ -13,7 +13,7 @@
            <div class="box"> 
            <div class="box-body"> 
             <form method="get" action="/recherche">
-              <legend><h2>Rechercher une Activitée :</h2></legend>
+              <legend><h2>Rechercher une Activité :</h2></legend>
      			<fieldset >
                     <label for="sport">Activité :</label>
                    <!-- <input type="text" id="sport" name="sport" value="" /> -->

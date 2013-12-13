@@ -12,7 +12,7 @@
         <div class="box box-featured">
           <div class="box-image"> <a href="#"><img src="/stylesheets/nis.jpg" alt="Bienvenue" /></a> <span class="mark-featured notext">&nbsp;</span> </div>
           <div class="box-body">
-            <h2>Vous êtes déjà inscrit à cette activitée ! </h2>
+            <h2>Vous êtes déjà inscrit à cette activité ! </h2>
            </div>
           <div class="cl">&nbsp;</div>
         </div>

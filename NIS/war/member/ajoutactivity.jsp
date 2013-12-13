@@ -13,7 +13,7 @@
            <div class="box"> 
            <div class="box-body"> 
             <form method="get" action="/ajout">
-              <legend><h2>Créer une Activitée :</h2></legend>
+              <legend><h2>Créer une Activité :</h2></legend>
      			<fieldset >
                     <label for="sport">Activité :</label>
                    <!-- <input type="text" id="sport" name="sport" value="" /> -->
@@ -155,11 +155,20 @@
 							 <OPTION value="30">30</OPTION> 
                     </SELECT>
                     <br />
-                </fieldset>
                 <input type="submit" value="Valider" style="border: none;background : black;font-size:15px;color:#ffa200;" />
-            </form>
-        </div>     
-     
+            	</fieldset>
+            	<fieldset>
+            		<p style="font-weight : 700; border: none;background : black;font-size:15px;color:#DC143C;">Warning</p> Ne pas prendre en compte l'erreur qui apparait lors de la validation. L'activité sera bien créer et les membres seront avertis.
+            	</fieldset>
+            </form> 
+            <br/>
+            <div>
+        	</div>
+        	
+        </div> 
+        
+		
+
         
 <jsp:include page="sidebar.jsp"></jsp:include>        
 <jsp:include page="footer.jsp"></jsp:include>

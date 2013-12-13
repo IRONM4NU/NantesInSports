@@ -6,7 +6,6 @@ import java.util.*;
 
 @Entity
 @Index
-@Cache//utilisation de Memcache
 public class Membre {
 		
 		public String getId() {
