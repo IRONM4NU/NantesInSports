@@ -63,10 +63,8 @@ Suppresion des activités qui ont eu lieu la veille(cronJob).
 ********************
 NOT WORKING 
 ********************
-Exception levé lors de l'envoi de mail dès la création de l'activité(mais l'activité est créer et le mail est envoyé !!! ),(http://blog.cloudme.org/2013/06/strange-exceptions-with-objectify-4-or-what-happens-if-you-query-unindexed-fields/)
+Exception levé lors de l'envoi de mail dès la création de l'activité(mais l'activité est créé et le mail est envoyé !!! ),(http://blog.cloudme.org/2013/06/strange-exceptions-with-objectify-4-or-what-happens-if-you-query-unindexed-fields/)
 ****************************
-CronJob lève une exception si durant la journée il n'y pas d'ajout d'activité.
-*********************
 (idée pour plus tard)
 ****************************
 Ajout du nom de la personne qui a créer l'activité
